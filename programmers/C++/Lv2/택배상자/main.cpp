@@ -8,22 +8,16 @@ int solution(vector<int> order) {
     
     stack<int> belt;
     
-    int cnt = 0;
     int idx = 0;
     
     for (int i=1; i<=order.size(); i++){
-        if (i != order[idx]){
-            belt.push(i);
-        } else {
-            cnt++;
+        belt.push(i);
+
+        while (idx<order.size() && !belt.empty() && belt.top()==order[idx]){
+            belt.pop();
             idx++;
-            while (!belt.empty() && belt.top()==order[idx]){
-                belt.pop();
-                idx++;
-                cnt++;
-            }
         }
     }
     
-    return cnt;
+    return idx;
 }
