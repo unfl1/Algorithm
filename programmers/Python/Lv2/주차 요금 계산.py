@@ -35,7 +35,6 @@ def solution(fees, records):
     return answer
 
 def to_minute(t):
-    total = 0
     h, m = map(int, t.split(":"))
     return h*60 + m
 
