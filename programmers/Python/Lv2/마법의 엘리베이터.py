@@ -1,17 +1,18 @@
 def solution(storey):
     answer = 0
+    storey = list(map(int, str(storey)))
 
-    while storey > 0:
-        digit = storey % 10
-        next_digit = (storey // 10) % 10
+    for i in range(len(storey)-1, 0, -1):
+        cur = storey[i]
+        nxt = storey[i-1]
 
-        if digit > 5 or (digit == 5 and next_digit >= 5):
-            # 올려서 현재 자릿수를 0으로 만들기
-            answer += 10 - digit
-            storey = storey // 10 + 1
+        if cur < 5 or (cur == 5 and nxt < 5):
+            answer += cur
+            storey[i] = 0
         else:
-            # 내려서 현재 자릿수를 0으로 만들기
-            answer += digit
-            storey //= 10
+            answer += 10 - cur
+            storey[i-1] += 1
+
+    answer += min(storey[0], 11 - storey[0])
 
     return answer
