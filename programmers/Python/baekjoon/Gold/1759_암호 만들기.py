@@ -1,4 +1,5 @@
-# 암호 만들기
+# Gold 5
+# 조합
 
 L, C = map(int, input().split())
 alpha = sorted(list(input().split()))
